@@ -1,4 +1,5 @@
 <template lang="pug">
 div
-    AuthCard/
+    div.container
+        AuthCard/
 </template>

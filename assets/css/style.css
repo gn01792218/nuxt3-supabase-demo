@@ -5,3 +5,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 自訂義 */
+.container{
+    @apply max-w-[50%] h-screen mx-auto flex justify-center items-center;
+}
+/* btn */
+.primary-btn{
+    @apply p-2 border-2 cursor-pointer bg-violet-600 hover:bg-violet-700;
+}
+/* input */
+.primary-input{
+    @apply p-2 mb-5 border-2 rounded-sm;
+}
