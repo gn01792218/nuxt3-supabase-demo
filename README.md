@@ -41,6 +41,7 @@ npm run preview
     div
         AuthCard/
 </template>
+
 <!-- 正確 -->
 <template lang="pug">
 div

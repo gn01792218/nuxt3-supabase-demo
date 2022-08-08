@@ -1,5 +1,5 @@
 <template lang="pug">
-div 
+div {{supabase}}
     NCard.p-10
         h3.text-3xl.mb-2.capitalize {{ authState }}
         div.flex.flex-col
@@ -14,5 +14,5 @@ div
 <script lang="ts" setup>
 import { AuthState } from "@/types/gloable";
 const { authState, switchAuthState } = useAuth()
-
+const { supabase } = useSupabase()
 </script>
