@@ -2,7 +2,8 @@ import { AuthState, Auth } from "@/types/gloable";
 import useSupabase from "@/composables/useSupabase"
 export default function useAuth() {
   const { supabase } = useSupabase()
-  
+  const router = useRouter()
+
   const userInput = ref<Auth>({
     email:"",
     password:"",
@@ -16,6 +17,7 @@ export default function useAuth() {
   })
 
   const authError = ref("")
+  const showCheckEmailMsg = ref(false)
 
   function switchAuthState() {
     if (authState.value === AuthState.LOGIN) authState.value = AuthState.SIGNUP;
@@ -31,11 +33,15 @@ export default function useAuth() {
     let {user,error} = await supabase.auth.signUp({
       email:email,
       password:password
+    },
+    { //第二個參數物件，設置email確認信，導向profile page
+      redirectTo:`${window.location.origin}/profile`
     })
+
+    showCheckEmailMsg.value = true
     clearAuthError()
+
     if(error) authError.value = error.message
-    return user
-  
   }
   async function login(auth:Auth){
     const { email, password } = auth
@@ -44,13 +50,17 @@ export default function useAuth() {
       email,
       password,
     })
+
     clearAuthError()
+
+    router.push('/profile')
+
     if(error) authError.value = error.message
   }
 
   async function logOut(){
     const { error } = await supabase.auth.signOut()
-    
+
     clearAuthError()
 
     if(error) authError.value = error.message
@@ -64,6 +74,7 @@ export default function useAuth() {
     userInput,
     authData,
     authError,
+    showCheckEmailMsg,
     //methods
     switchAuthState,
     signUp,
