@@ -8,7 +8,10 @@
 
 /* 自訂義 */
 .container{
-    @apply max-w-[50%] h-screen mx-auto flex justify-center items-center;
+    @apply max-w-[50%] h-[90%] mx-auto flex justify-center items-center;
+}
+.nav{
+    @apply h-[10%] bg-black text-white
 }
 /* btn */
 .primary-btn{

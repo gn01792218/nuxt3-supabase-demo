@@ -62,7 +62,8 @@ export default function useAuth() {
     const { error } = await supabase.auth.signOut()
 
     clearAuthError()
-
+    router.push('/')
+    
     if(error) authError.value = error.message
   }
   function clearAuthError(){
