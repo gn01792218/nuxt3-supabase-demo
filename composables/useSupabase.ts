@@ -1,15 +1,14 @@
-import { createClient } from '@supabase/supabase-js'
-
-const config = useRuntimeConfig();
-const supabaseKey = config.SUPABASE_KEY
-const supabaseUrl = config.SUPABASE_URL
+import { createClient } from "@supabase/supabase-js";
 
 export default function useSupabase() {
-    const supabase = createClient(supabaseUrl,supabaseKey )
-    
-    return {
-      //data
-      supabase,
-      //methods
-    };
-  }
+  const config = useRuntimeConfig();
+  const supabaseKey = config.SUPABASE_KEY;
+  const supabaseUrl = config.SUPABASE_URL;
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  return {
+    //data
+    supabase,
+    //methods
+  };
+}

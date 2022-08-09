@@ -16,5 +16,5 @@
 }
 /* input */
 .primary-input{
-    @apply p-2 mb-5 border-2 rounded-sm;
+    @apply p-2 border-2 rounded-sm;
 }
