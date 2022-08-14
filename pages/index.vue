@@ -5,5 +5,6 @@ div
         NButton.primary-btn.ml-5(@click="logOut") 登出
 </template>
 <script lang="ts" setup>
-const { authData, logOut } = useAuth();
+// const { authData } = useAuth()
+const {  authData, logOut } = useAuth()
 </script>

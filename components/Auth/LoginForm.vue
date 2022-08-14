@@ -16,6 +16,7 @@ div
 </template>
 <script lang="ts" setup>
 import { AuthState } from "@/types/gloable";
-const { authState, authData, authError, showCheckEmailMsg, switchAuthState, userInput, signUp, login, logOut } = useAuth();
+// const { authData } = useAuth()
+const { authData, authState, authError, showCheckEmailMsg, switchAuthState, userInput, signUp, login, logOut } = useAuth();
 const { supabase } = useSupabase();
 </script>

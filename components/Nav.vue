@@ -11,6 +11,7 @@ nav.nav
 </template>
 <script lang="ts" setup>
 import useAuth from '~~/composables/useAuth';
+// const { authData } = useAuth()
 const { authData, logOut, userInput } = useAuth();  
 const { navList } = useNav()
 </script>

@@ -1,6 +1,6 @@
 import { AuthState, Auth } from "@/types/gloable";
 import useSupabase from "@/composables/useSupabase"
-export default function useAuth() {
+export default function useAuthLog() {
   const { supabase } = useSupabase()
   const router = useRouter()
 
@@ -10,11 +10,6 @@ export default function useAuth() {
   })
 
   const authState = ref<AuthState>(AuthState.LOGIN);
-  
-  const authData = useState('user',()=>null)
-  supabase.auth.onAuthStateChange((e, session)=>{  //自動監聽authState賦值給前端userData
-    authData.value = session?.user
-  })
 
   const authError = ref("")
   const showCheckEmailMsg = ref(false)
@@ -65,13 +60,13 @@ export default function useAuth() {
     router.push('/')
     
     if(error) authError.value = error.message
+    console.log('登出成功',error)
   }
   function clearAuthError(){
     if(authError.value) authError.value = ""
   }
   return {
     //data
-    authData,
     authState,
     userInput,
     authError,
