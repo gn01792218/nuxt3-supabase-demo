@@ -19,6 +19,10 @@ export default function useAuth() {
   const authError = ref("")
   const showCheckEmailMsg = ref(false)
 
+  const authIsLogIn = computed(()=>{
+    return authData.value!== null && authData.value!==undefined
+  })
+
   function switchAuthState() {
     if (authState.value === AuthState.LOGIN) authState.value = AuthState.SIGNUP;
     else authState.value = AuthState.LOGIN;
@@ -65,6 +69,7 @@ export default function useAuth() {
     router.push('/')
     
     if(error) authError.value = error.message
+    console.log(authIsLogIn.value)
   }
   function clearAuthError(){
     if(authError.value) authError.value = ""
@@ -76,6 +81,7 @@ export default function useAuth() {
     userInput,
     authError,
     showCheckEmailMsg,
+    authIsLogIn,
     //methods
     switchAuthState,
     signUp,

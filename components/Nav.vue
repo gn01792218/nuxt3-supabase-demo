@@ -7,11 +7,11 @@ nav.nav
             @click="nav.clickHandler ?? null"
         ) 
             NuxtLink(:to="nav.routeName?`${nav.routeName}` : '#'") {{nav.title}}
-        li.ml-auto.cursor-pointer(v-show="authData" @click="logOut") LogOut
+        li.ml-auto.cursor-pointer(v-show="authIsLogIn" @click="logOut") LogOut
 </template>
 <script lang="ts" setup>
 import useAuth from '~~/composables/useAuth';
 // const { authData } = useAuth()
-const { authData, logOut, userInput } = useAuth();  
+const { authIsLogIn, logOut, userInput } = useAuth();  
 const { navList } = useNav()
 </script>
